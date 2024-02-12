@@ -4,5 +4,3 @@
  */
 
 pub(crate) mod lexer;
-
-use lexer::*;
