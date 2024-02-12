@@ -7,16 +7,7 @@
 mod lexer;
 mod parser;
 
-use std::panic::resume_unwind;
-
-#[derive(Debug, PartialEq)]
-enum Token {
-    Int(i32),
-    Plus,
-    Minus,
-    Star,
-    Slash
-}
+use lexer::lexer::*;
 
 fn tokenize(input: &str) -> Vec<Token> {
     let mut tokens = Vec::new();
@@ -33,19 +24,19 @@ fn tokenize(input: &str) -> Vec<Token> {
                     } else {
                         break;
                     }
-                } tokens.push(Token::Int(number));
+                } tokens.push(Token::INT(number));
             } '+' => {
                 chars.next();
-                tokens.push(Token::Plus);
+                tokens.push(Token::PLUS);
             }, '-' => {
                 chars.next();
-                tokens.push(Token::Minus);
+                tokens.push(Token::MINUS);
             }, '*' => {
                 chars.next();
-                tokens.push(Token::Star);
+                tokens.push(Token::STAR);
             }, '/' => {
                 chars.next();
-                tokens.push(Token::Slash);
+                tokens.push(Token::SLASH);
             }, _ => {
                 chars.next();
                 ()
@@ -60,23 +51,23 @@ fn evaluate(tokens: Vec<Token>) -> i32 {
 
     while let Some(token) = tokens.next() {
         match token {
-            Token::Int(n) => {
+            Token::INT(n) => {
                 result = n;
                 while let Some(op) = tokens.next() {
-                    match op { Token::Plus => {
-                            if let Some(Token::Int(n)) = tokens.next() {
+                    match op { Token::PLUS => {
+                            if let Some(Token::INT(n)) = tokens.next() {
                                 result += n;
                             }
-                        }, Token::Minus => {
-                            if let Some(Token::Int(n)) = tokens.next() {
+                        }, Token::MINUS => {
+                            if let Some(Token::INT(n)) = tokens.next() {
                                 result -= n;
                             }
-                        }, Token::Star => {
-                            if let Some(Token::Int(n)) = tokens.next() {
+                        }, Token::STAR => {
+                            if let Some(Token::INT(n)) = tokens.next() {
                                 result *= n;
                             }
-                        }, Token::Slash => {
-                            if let Some(Token::Int(n)) = tokens.next() {
+                        }, Token::SLASH => {
+                            if let Some(Token::INT(n)) = tokens.next() {
                                 result /= n;
                             }
                         }, _ => unreachable!(),

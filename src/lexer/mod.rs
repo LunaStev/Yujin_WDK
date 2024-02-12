@@ -3,4 +3,6 @@
  - Lexer 개발 파일
  */
 
-mod lexer;
+pub(crate) mod lexer;
+
+use lexer::*;
