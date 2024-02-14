@@ -4,4 +4,3 @@
  */
 
 pub(crate) mod lexer;
-mod ast;
