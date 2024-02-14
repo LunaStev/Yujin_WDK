@@ -9,6 +9,7 @@ pub enum NodeType {
 pub enum DataType {
     STRING,
     NUMBER,
+    MI,
 }
 
 pub struct Node {
