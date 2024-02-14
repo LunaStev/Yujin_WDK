@@ -1,4 +1,4 @@
-enum NodeType {
+pub enum NodeType {
     Program(Vec<Box<Node>>),
     FunctionDeclaration { name: String, body: Box<Node> },
     VariableDeclaration { name: String, value: Box<Node>, data_type: DataType },
@@ -6,11 +6,11 @@ enum NodeType {
     Expression(Box<Node>)
 }
 
-enum DataType {
+pub enum DataType {
     STRING,
     NUMBER,
 }
 
-struct  Node {
+pub struct Node {
     node_type: NodeType,
 }
