@@ -1,38 +1,34 @@
 /*
  - lexer.rs
  */
+use nom::branch::*;
+use nom::bytes::complete::{tag, take};
+use nom::character::complete::{alpha1, alphanumeric1, digit1, multispace0};
+use nom::combinator::{map, map_res, recognize};
+use nom::multi::many0;
+use nom::sequence::{delimited, pair};
+use nom::*;
 
-/**
- - 토큰
- */
-#[derive(Debug, PartialEq)]
-pub enum Token {
-    /** int */
-    INT(i32),
+use std::str;
+use std::str::FromStr;
+use std::str::Utf8Error;
 
-    /** 변수 */
-    VAR,
-    /** 숫자 변수 */
-    COUNT,
-    /** 함수 */
-    FUN,
-    /** 플러스 */
-    PLUS,
-    /** 마이너스 */
-    MINUS,
-    /** 별 */
-    STAR,
-    /** 슬래시 */
-    SLASH,
-    /** 임포트 */
-    IMPORT,
+use crate::lexer::token::*;
 
-    /** 세미콜론 */
-    SEMICOLON,
-    /** 콤마 */
-    COMMA,
 
-    /** if */
-    IF,
+macro_rules! syntax {
+    (&func_name: ident, &tag_string: literal, &output_token: expr) => {
+        fn &func_name<'a> (s: &'a [u8]) -> IResult<&[u8], Token> {
+            map(tag(&tag_string), |_| &output_token)(s)
+        }
+    };
+}
 
+syntax! {equal_operator, "==", Token::EQUAL}
+
+pub fn lex_operator(input: &[u8]) -> IResult<&[u8] ,Token> {
+    alt(
+        equal_operator,
+
+    )(input)
 }
