@@ -4,9 +4,6 @@
  - 메인 개발 파일
  */
 
-mod lexer;
-mod parser;
-
 use lexer::lexer::*;
 
 fn tokenize(input: &str) -> Vec<Token> {
