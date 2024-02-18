@@ -4,7 +4,11 @@
  - 메인 개발 파일
  */
 
-use lexer::lexer::*;
+mod lexer;
+
+mod parser;
+
+use lexer::token::*;
 
 fn tokenize(input: &str) -> Vec<Token> {
     let mut tokens = Vec::new();
