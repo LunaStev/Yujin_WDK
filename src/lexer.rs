@@ -4,9 +4,14 @@ pub enum Token {
     FUN,
     VAR,
     COUNT,
-    WHILD,
+    WHILE,
     IF,
     ELSE,
+    SWITCH,
+    FOR,
+    RETURN,
+
+    Import,
 
     Semicolon,  //  ;
 
