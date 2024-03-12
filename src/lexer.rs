@@ -1,3 +1,5 @@
+// lexer.rs
+
 #[allow(dead_code)]
 #[derive(Debug, Clone, PartialEq)]
 pub enum Token {
@@ -27,6 +29,6 @@ pub enum Token {
     Plus,       //  +
     Minus,      //  -
     Multi,      //  *
-    splash,     // /
+    Splash,     // /
     Assign      // =
 }
