@@ -27,6 +27,6 @@ pub enum Token {
     Plus,       //  +
     Minus,      //  -
     Multi,      //  *
-    splash,     // /
+    Splash,     // /
     Assign      // =
 }
