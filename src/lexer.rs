@@ -12,6 +12,8 @@ pub enum Token {
     SWITCH,
     FOR,
     RETURN,
+    Break,
+    Char,
 
     Import,
 
@@ -30,5 +32,6 @@ pub enum Token {
     Minus,      //  -
     Multi,      //  *
     Splash,     // /
+    Equal,      // ==
     Assign      // =
 }
