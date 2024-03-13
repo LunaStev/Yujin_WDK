@@ -5,4 +5,7 @@ mod parser;
 mod lexer;
 mod token;
 
-#[derive(Debug, ParialEq)]
+#[derive(Debug, PartialEq)]
+pub enum CharacterType {
+    NewLine,    // \n
+}
